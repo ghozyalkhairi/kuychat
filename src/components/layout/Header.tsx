@@ -12,10 +12,10 @@ const Header: FC = () => {
       top="0"
     >
       <Text as="h1" fontSize="md" textAlign="center" py={4}>
-        KuyChat💬 by
+        KuyChat💬
         <Text as="span" color="brand.white">
           {" "}
-          GhozyAlkhairi
+          by GhozyAlkhairi
         </Text>
       </Text>
     </Box>
