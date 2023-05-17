@@ -17,7 +17,7 @@ const ChatItem: FC<Props> = ({ message }) => {
       borderRadius="2xl"
       mb={2}
       alignSelf="flex-start"
-      maxW="50%"
+      maxW="65%"
     >
       <Text fontSize="sm" fontWeight="bold">
         {message.username}

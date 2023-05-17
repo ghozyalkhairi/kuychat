@@ -6,6 +6,7 @@ import ProfileForm from "./ProfileForm"
 import { createMessage } from "@/lib/messageService"
 import { useUserName } from "@/store/userStore"
 import { useAppActions } from "@/store/appStore"
+import { useToast } from "@chakra-ui/react"
 
 const ChatForm: FC = () => {
   const [message, setMessage] = useState("")
@@ -13,8 +14,16 @@ const ChatForm: FC = () => {
   const username = useUserName()
   const { setRefresh } = useAppActions()
 
+  const toast = useToast()
+
   const handleSubmit: FormEventHandler<HTMLFormElement> = async (e) => {
     e.preventDefault()
+    toast({
+      title: "Mengirim",
+      description: "Pesan sedang dikirim",
+      status: "info",
+      position: "top",
+    })
     if (message.trim() === "") return
     try {
       const messageData = {
@@ -24,8 +33,20 @@ const ChatForm: FC = () => {
       await createMessage(messageData)
       setMessage("")
       setRefresh()
+      toast({
+        title: "Berhasil",
+        description: "Pesan berhasil dikirim",
+        status: "success",
+        position: "top",
+      })
     } catch (error) {
       console.log(error)
+      toast({
+        title: "Gagal",
+        description: "Pesan gagal dikirim",
+        status: "error",
+        position: "top",
+      })
     }
   }
 
@@ -51,13 +72,13 @@ const ChatForm: FC = () => {
           </Box>
           <Input
             type="text"
-            placeholder="Masukkan pesanmu"
+            placeholder="Masukkan pesan"
             value={message}
             onChange={(e) => setMessage(e.target.value)}
           />
-          <Box>
+          <button type="submit">
             <SendIcon width={26} height={26} />
-          </Box>
+          </button>
         </Box>
       </form>
     </>
