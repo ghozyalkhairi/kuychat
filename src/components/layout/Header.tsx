@@ -11,8 +11,12 @@ const Header: FC = () => {
       pos="fixed"
       top="0"
     >
-      <Text as="h1" fontSize="lg" textAlign="center" py={4}>
-        KuyChat💬
+      <Text as="h1" fontSize="md" textAlign="center" py={4}>
+        KuyChat💬 by
+        <Text as="span" color="brand.white">
+          {" "}
+          GhozyAlkhairi
+        </Text>
       </Text>
     </Box>
   )
