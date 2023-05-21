@@ -11,7 +11,7 @@ const RoomList: FC<Props> = ({ rooms, loading }) => {
   if (loading) {
     return (
       <Center h="100vh">
-        <Spinner size="xl" color="brand.primary" />
+        <Spinner size="md" color="brand.primary" />
       </Center>
     )
   }
