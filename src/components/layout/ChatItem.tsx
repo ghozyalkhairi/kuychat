@@ -1,6 +1,6 @@
 import { Box, Text } from "@chakra-ui/react"
 import { FC } from "react"
-import { format, formatDistance } from "date-fns"
+import { formatDistance } from "date-fns"
 import { id } from "date-fns/locale"
 
 interface Props {
@@ -15,7 +15,7 @@ const ChatItem: FC<Props> = ({ message }) => {
       px={4}
       py={2}
       borderRadius="2xl"
-      mb={2}
+      my={2}
       alignSelf="flex-start"
       maxW="65%"
     >

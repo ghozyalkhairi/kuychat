@@ -8,7 +8,11 @@ import { useUserName } from "@/store/userStore"
 import { useAppActions } from "@/store/appStore"
 import { useToast } from "@chakra-ui/react"
 
-const ChatForm: FC = () => {
+interface Props {
+  roomId: string
+}
+
+const ChatForm: FC<Props> = ({ roomId }) => {
   const [message, setMessage] = useState("")
   const { isOpen, onOpen, onClose } = useDisclosure()
   const username = useUserName()
@@ -29,6 +33,7 @@ const ChatForm: FC = () => {
       const messageData = {
         content: message,
         username,
+        roomId,
       }
       await createMessage(messageData)
       setMessage("")
@@ -67,7 +72,7 @@ const ChatForm: FC = () => {
           gap={4}
           bg="brand.semiBlack"
         >
-          <Box onClick={onOpen}>
+          <Box onClick={onOpen} cursor="pointer">
             <ProfileIcon width={26} height={26} />
           </Box>
           <Input
@@ -76,7 +81,12 @@ const ChatForm: FC = () => {
             value={message}
             onChange={(e) => setMessage(e.target.value)}
           />
-          <button type="submit">
+          <button
+            type="submit"
+            style={{
+              cursor: "pointer",
+            }}
+          >
             <SendIcon width={26} height={26} />
           </button>
         </Box>

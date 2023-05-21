@@ -33,7 +33,7 @@ const ChatList: FC<Props> = ({ messages, loading }) => {
           <ChatItem key={message.id} message={message} />
         ))
       ) : (
-        <Center h="100vh">
+        <Center h="100%" mt={14}>
           <Text fontSize="sm" textAlign="center" color="brand.white">
             Belum ada pesan
           </Text>

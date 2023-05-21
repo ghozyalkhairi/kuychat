@@ -41,6 +41,7 @@ const ProfileForm: FC<Props> = ({ isOpen, onClose }) => {
           <FormControl id="name">
             <FormLabel>Nama</FormLabel>
             <Input
+              bg="brand.semiBlack"
               type="text"
               value={name}
               onChange={(e) => setName(e.target.value)}

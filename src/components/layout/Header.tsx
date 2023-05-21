@@ -1,7 +1,15 @@
-import { Box, Text } from "@chakra-ui/react"
+import BackIcon from "@/assets/BackIcon"
+import { Link } from "@chakra-ui/next-js"
+import { Box, Button, Text } from "@chakra-ui/react"
+
 import { FC } from "react"
 
-const Header: FC = () => {
+interface Props {
+  isRoom?: boolean
+  roomName?: string
+}
+
+const Header: FC<Props> = ({ isRoom, roomName }) => {
   return (
     <Box
       as="header"
@@ -11,13 +19,38 @@ const Header: FC = () => {
       pos="fixed"
       top="0"
     >
-      <Text as="h1" fontSize="md" textAlign="center" py={4}>
-        KuyChat💬
-        <Text as="span" color="brand.white">
-          {" "}
-          by GhozyAlkhairi
+      <Box
+        w="100%"
+        display="flex"
+        justifyContent="center"
+        alignItems="center"
+        px="4"
+      >
+        {isRoom && (
+          <Link href="/" textDecoration="none">
+            <BackIcon width={28} height={28} />
+          </Link>
+        )}
+        <Text w="100%" as="h1" fontSize="md" textAlign="center" py={4}>
+          {isRoom ? (
+            <>
+              {
+                <Text as="span" color="brand.white">
+                  {roomName}
+                </Text>
+              }
+            </>
+          ) : (
+            <Text color="brand.primary">
+              KuyChat💬
+              <Text as="span" color="brand.white">
+                {" "}
+                by GhozyAlkhairi
+              </Text>
+            </Text>
+          )}
         </Text>
-      </Text>
+      </Box>
     </Box>
   )
 }

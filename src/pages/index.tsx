@@ -1,15 +1,15 @@
-import ChatForm from "@/components/layout/ChatForm"
-import ChatList from "@/components/layout/ChatList"
 import Header from "@/components/layout/Header"
 import { Box } from "@chakra-ui/react"
 import { NextPage } from "next"
 import Head from "next/head"
 import { useState, useEffect } from "react"
-import { getMessages } from "@/lib/messageService"
+import { getRooms } from "@/lib/roomService"
 import { useRefresh } from "@/store/appStore"
+import RoomList from "@/components/layout/RoomList"
+import RoomCreator from "@/components/layout/RoomCreator"
 
 const Home: NextPage = () => {
-  const [messages, setMessages] = useState<Message[]>([])
+  const [rooms, setRooms] = useState<Room[]>([])
   const [loading, setLoading] = useState(false)
 
   const refresh = useRefresh()
@@ -17,8 +17,8 @@ const Home: NextPage = () => {
   useEffect(() => {
     const fetchMessages = async () => {
       setLoading(true)
-      const messages = await getMessages()
-      setMessages(messages)
+      const rooms = await getRooms()
+      setRooms(rooms)
       setLoading(false)
     }
     fetchMessages()
@@ -33,8 +33,8 @@ const Home: NextPage = () => {
       </Head>
       <Box as="main" bg="brand.gray" minH="100vh">
         <Header />
-        <ChatList messages={messages} loading={loading} />
-        <ChatForm />
+        <RoomCreator />
+        <RoomList rooms={rooms} loading={loading} />
       </Box>
     </>
   )

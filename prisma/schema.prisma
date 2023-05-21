@@ -10,8 +10,20 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model Room {
+  id        String    @id @default(auto()) @map("_id") @db.ObjectId
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  name      String
+  isPrivate Boolean
+  password  String?
+  messages  Message[]
+}
+
 model Message {
   id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  room      Room     @relation(fields: [roomId], references: [id])
+  roomId    String   @db.ObjectId
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   content   String
