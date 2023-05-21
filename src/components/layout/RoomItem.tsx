@@ -9,7 +9,6 @@ export interface Props {
 }
 
 const RoomItem: FC<Props> = ({ room }) => {
-  console.log(room)
   return (
     <Box
       bg="brand.semiBlack"
