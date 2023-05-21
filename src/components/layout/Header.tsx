@@ -1,6 +1,8 @@
 import BackIcon from "@/assets/BackIcon"
+import RefreshIcon from "@/assets/RefreshIcon"
 import { Link } from "@chakra-ui/next-js"
-import { Box, Button, Text } from "@chakra-ui/react"
+import { Box, Text } from "@chakra-ui/react"
+import { useAppActions } from "@/store/appStore"
 
 import { FC } from "react"
 
@@ -10,6 +12,7 @@ interface Props {
 }
 
 const Header: FC<Props> = ({ isRoom, roomName }) => {
+  const { setRefresh } = useAppActions()
   return (
     <Box
       as="header"
@@ -50,6 +53,11 @@ const Header: FC<Props> = ({ isRoom, roomName }) => {
             </Text>
           )}
         </Text>
+        {isRoom && (
+          <button onClick={() => setRefresh()}>
+            <RefreshIcon width={28} height={28} />
+          </button>
+        )}
       </Box>
     </Box>
   )
