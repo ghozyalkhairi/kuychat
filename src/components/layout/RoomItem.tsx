@@ -13,10 +13,9 @@ const RoomItem: FC<Props> = ({ room }) => {
     <Box
       bg="brand.semiBlack"
       color="brand.white"
-      my={2}
+      my={1}
       p={4}
       borderRadius={4}
-      mb={2}
       display="flex"
       alignItems="center"
       justifyContent="space-between"
