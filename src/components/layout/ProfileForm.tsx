@@ -62,6 +62,10 @@ const ProfileForm: FC<Props> = ({ isOpen, onClose }) => {
           </Button>
           <Button
             variant="ghost"
+            _hover={{
+              bg: "brand.white",
+              color: "brand.black",
+            }}
             onClick={() => {
               onClose()
             }}
